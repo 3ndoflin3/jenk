@@ -1,10 +1,18 @@
 pipeline {
     agent any
-
+    //Definir Variables
+    environment {
+        FICHERO = "/etc/group"
+    }
     stages {
-        stage('Hello') {
+        stage('Fecha') {                    
             steps {
-                echo 'Hello World'
+                sh 'date'
+            }
+        }
+        stage('ContarUsuarios'){
+            steps{
+                sh 'wc -l ${FICHERO}'
             }
         }
     }
